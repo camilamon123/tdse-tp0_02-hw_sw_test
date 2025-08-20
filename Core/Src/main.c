@@ -21,6 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "stdio.h"
 
 /* USER CODE END Includes */
 
@@ -54,7 +55,7 @@ static void MX_GPIO_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+extern void initialise_monitor_handles(void);
 /* USER CODE END 0 */
 
 /**
@@ -65,7 +66,10 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-
+	initialise_monitor_handles();
+	char s[50];
+	char *p;
+	p = s;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -87,7 +91,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-
+ printf("Hello World!\n");
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -97,8 +101,11 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  HAL_GPIO_TogglePin(LED_GPIO_Port,LED_Pin);
-	  HAL_Delay(500);
+	  printf("Enter string:\n");
+	  scanf("%s", p);
+	  printf("\nReceived string: ");
+	  printf(p);
+	  printf("\n");
   }
   /* USER CODE END 3 */
 }
